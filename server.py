@@ -20,18 +20,23 @@ responses = [
     'Cannot predict now'
 ]
 
+
 def magic_8_ball(question):
     random.seed(question)
     return random.choice(responses)
 
 
-while True:
-    client_socket, addr = server_socket.accept()
+client_socket, addr = server_socket.accept()
+print(f"Connection is established with {addr = }")
 
-    question = client_socket.recv((1024).decode('utf-8'))
+while True:
+    question = client_socket.recv(1024).decode('utf-8')
+    if not question:
+        break
+
     response = magic_8_ball(question)
 
     client_socket.send(response.encode('utf-8'))
 
-    client_socket.close()
+client_socket.close()
 
