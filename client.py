@@ -2,7 +2,7 @@ import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect(('localhost', 1234))
-print("Connected to Magic-8-ball server")
+print("Connected to Magic-8-ball Server")
 
 while True:
     question = input("Ask your question: \n")
